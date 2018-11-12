@@ -1,0 +1,35 @@
+{
+  "db": {
+    "name": "db",
+    "connector": "memory"
+  },
+  "frenchlesson": {
+    "host": "localhost",
+    "port": 3306,
+    "url": "",
+    "database": "frenchlesson",
+    "password": "&aqWse4rfVgy7",
+    "name": "frenchlesson",
+    "user": "root",
+    "connector": "mysql"
+  },
+  "Email": {
+    "name": "Email",
+    "connector": "mail",
+    "transports": [
+      {
+        "type": "SMTP",
+        "host": "ssl0.ovh.net",
+        "secure": true,
+        "port": 465,
+        "tls": {
+          "rejectUnouthorized": true
+        },
+        "auth": {
+          "user": "pawel@aidodys.com",
+          "pass": "pg-aidodys"
+        }
+      }
+    ]
+  }
+}
