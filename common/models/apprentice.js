@@ -6,7 +6,7 @@ const senderAddress = "no-replay@email.com";
 const loopback = require('loopback');
 
 module.exports = function(Apprentice) {
-console.log('\napprentice.js');
+
   Apprentice.afterRemote('create', function(context, userInstance, next) {
     console.log('> user.afterRemote triggered');
 

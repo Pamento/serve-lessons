@@ -8,13 +8,13 @@ module.exports = function(app) {
   let Apprentice = app.models.apprentice;
 
   // first autoupdate the `Apprentice` model to avoid foreign key constraint failure
-  mysqlDs.automigrate('apprentice', function(err) {
+  mysqlDs.autoupdate('apprentice', function(err) {
     if (err) throw err;
     console.log('\nAutoupdated table `Apprentice`.');
 
-    mysqlDs.automigrate('exercise', function(err) {
+    mysqlDs.autoupdate('exercise', function(err) {
       if (err) throw err;
-      console.log('\nAutoupdated table `exercise`.');
+      console.log('Autoupdated table `exercise`.');
       // at this point the database table `exercise` should have one foreign key `ApprenticeId` integrated
     });
   });
