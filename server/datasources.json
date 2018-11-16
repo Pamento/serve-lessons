@@ -19,15 +19,15 @@
     "transports": [
       {
         "type": "SMTP",
-        "host": "ssl0.ovh.net",
+        "host": "",
         "secure": true,
         "port": 465,
         "tls": {
           "rejectUnouthorized": true
         },
         "auth": {
-          "user": "pawel@aidodys.com",
-          "pass": "pg-aidodys"
+          "user": "",
+          "pass": ""
         }
       }
     ]
