@@ -7,11 +7,11 @@
     "host": "localhost",
     "port": 3306,
     "url": "",
-    "database": "pgrzesik_frenchlesson",
-    "password": "pgrzesik",
-    "name": "frenchlesson",
-    "user": "pgrzesik",
-    "connector": "mysql"
+    "database": "",
+    "password": "",
+    "name": "",
+    "user": "",
+    "connector": ""
   },
   "Email": {
     "name": "Email",
