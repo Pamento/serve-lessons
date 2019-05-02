@@ -3,7 +3,7 @@ const loopback = require('loopback');
 
 module.exports = function(app) {
 
-  let mysqlDs = app.dataSources.frenchlesson;
+  let mysqlDs = app.dataSources.frLesson;
   let exercise = app.models.exercise;
   let Apprentice = app.models.apprentice;
 

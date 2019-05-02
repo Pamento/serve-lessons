@@ -3,14 +3,14 @@
     "name": "db",
     "connector": "memory"
   },
-  "frenchlesson": {
+  "frLesson": {
+    "debug": true,
     "host": "localhost",
     "port": 3306,
-    "url": "",
-    "database": "pgrzesik_frenchlesson",
-    "password": "pgrzesik",
-    "name": "frenchlesson",
-    "user": "pgrzesik",
+    "database": "frenchlessons",
+    "password": "toor",
+    "name": "frLesson",
+    "user": "toor",
     "connector": "mysql"
   },
   "Email": {
@@ -19,15 +19,15 @@
     "transports": [
       {
         "type": "SMTP",
-        "host": "ssl0.ovh.net",
+        "host": "in-v3.mailjet.com",
         "secure": true,
-        "port": 465,
+        "port": 587,
         "tls": {
           "rejectUnouthorized": true
         },
         "auth": {
-          "user": "pawel@aidodys.com",
-          "pass": "pg-aidodys"
+          "user": "pamento.dev@gmail.com",
+          "pass": "ki-lo9-mp0"
         }
       }
     ]

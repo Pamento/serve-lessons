@@ -1,6 +1,6 @@
 'use strict';
 // module.exports = function(app) {
-//   app.dataSources.frenchlesson.automigrate('apprentice', function(err) {
+//   app.dataSources.frenchlessons.automigrate('apprentice', function(err) {
 //     if (err) throw err;
 
 //     app.models.apprentice.create([{
