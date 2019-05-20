@@ -2,8 +2,16 @@
 
 var loopback = require('loopback');
 var boot = require('loopback-boot');
+var bodyParser = require('body-parser');
 
 var app = module.exports = loopback();
+
+app.middleware('initial', bodyParser.urlencoded({ extended: true}));
+boot(app, __dirname);
+app.engine('html', require('ejs').renderFile);
+// app.set('view engine', 'ejs');
+// app.set('view engine', 'html');
+app.set('json spaces', 2);
 
 app.start = function() {
   // start the web server

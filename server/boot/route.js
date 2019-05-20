@@ -1,5 +1,6 @@
 const path = require('path');
 const loopback = require('loopback');
+const nodeMailer = require('nodemailer'),
 
 module.exports = function(app) {
 
@@ -18,8 +19,16 @@ module.exports = function(app) {
       // at this point the database table `exercise` should have one foreign key `ApprenticeId` integrated
     });
   });
+  // at localhost:3000 is give the client the status of server
+  var router = app.loopback.Router();
+  router.get('/', app.loopback.status());
+  app.use(router);
 
-  
+  // check the sender
+  app.get('/first', function(req,res) {
+    console.log('route of root');
+    res.render('first.html');
+  });
 
   // after verification on email adress, this route generate verified.ejs page response in the client browser.
   app.get('/verified', function(req, res) {
@@ -56,5 +65,31 @@ module.exports = function(app) {
   app.post('/email', function(req, res, next) {
     console.log('ok');
     console.log(req);
+  });
+  app.post('/send-email', function (req, res) {
+    let transporter = nodeMailer.createTransport({
+        host: 'smtp.gmail.com',
+        port: 465,
+        secure: true,
+        auth: {
+            user: 'xxx@xx.com',
+            pass: 'xxxx'
+        }
+    });
+    let mailOptions = {
+        from: '"Krunal Lathiya" <xx@gmail.com>', // sender address
+        to: req.body.to, // list of receivers
+        subject: req.body.subject, // Subject line
+        text: req.body.body, // plain text body
+        html: '<b>NodeJS Email Tutorial</b>' // html body
+    };
+
+    transporter.sendMail(mailOptions, (error, info) => {
+      if (error) {
+          return console.log(error);
+      }
+      console.log('Message %s sent: %s', info.messageId, info.response);
+      res.render('index');
+    });
   });
 }

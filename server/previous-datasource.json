@@ -19,15 +19,15 @@
     "transports": [
       {
         "type": "SMTP",
-        "host": "smtp.ethereal.email",
-        "secure": false,
+        "host": "in-v3.mailjet.com",
+        "secure": true,
         "port": 587,
         "tls": {
           "rejectUnouthorized": true
         },
         "auth": {
-          "user": "seamus40@ethereal.email",
-          "pass": "ahgxQ2grBk7nkrudU3"
+          "user": "pamento.dev@gmail.com",
+          "pass": "ki!-lO9-mP0"
         }
       }
     ]

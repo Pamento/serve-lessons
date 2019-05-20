@@ -6,6 +6,21 @@ const senderAddress = "no-replay@email.com";
 const loopback = require('loopback');
 
 module.exports = function(Apprentice) {
+console.log('in Apprentice sending mailing');
+
+  // Apprentice.sendEmail = function(cb) {
+  //   Apprentice.app.models.Email.send({
+  //     to: 'foo@bar.com',
+  //     from: senderAddress,
+  //     subject: 'Emial from me',
+  //     text: '{href}',
+
+  //     html: 'my <em>kapusta</em>'
+  //   }, function(err, mail) {
+  //     console.log('email sent!');
+  //     cb(err);
+  //   });
+  // }
 
   Apprentice.afterRemote('create', function(context, userInstance, next) {
     console.log('> user.afterRemote triggered');
