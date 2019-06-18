@@ -10,7 +10,7 @@
 //     }, {
 //       name: 'John',
 //       email: 'john@john.fr',
-//       password: '123'      
+//       password: '123'
 //     }, {
 //       name: 'Jack',
 //       email: 'jack@jack.fr',

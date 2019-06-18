@@ -2,11 +2,11 @@
 
 const config = require('../../server/config.json');
 const path = require('path');
-const senderAddress = "no-replay@email.com";
+const senderAddress = 'no-replay@email.com';
 const loopback = require('loopback');
 
 module.exports = function(Apprentice) {
-console.log('in Apprentice sending mailing');
+  console.log('in Apprentice sending mailing');
 
   // Apprentice.sendEmail = function(cb) {
   //   Apprentice.app.models.Email.send({
@@ -33,16 +33,15 @@ console.log('in Apprentice sending mailing');
       template: path.resolve(__dirname, '../../server/views/verify.ejs'),
       text: '{href}',
       redirect: 'verified',
-      user: userInstance
+      user: userInstance,
     };
 
     // or user.verify
     userInstance.verify(options, function(err, response) {
-
-			if (err) {
-				Apprentice.deleteById(userInstance.id);
-				return next(err);
-			}
+      if (err) {
+        Apprentice.deleteById(userInstance.id);
+        return next(err);
+      }
 
       console.log('> verification email sent:\n', response);
 
@@ -64,16 +63,18 @@ console.log('in Apprentice sending mailing');
     const options = {
       url: url,
       link: link,
-      user: info.email
-    }
+      user: info.email,
+    };
 
-    let template = loopback.template(path.resolve(__dirname, '../../server/views/link-pass-reset.ejs'));
+    let template = loopback.template(
+        path.resolve(__dirname, '../../server/views/link-pass-reset.ejs')
+      );
     let html = template(options);
     Apprentice.app.models.email.send({
       to: info.email,
       from: senderAddress,
       subject: 'Password reset',
-      html: html
+      html: html,
     }, function(err) {
       if (err) return console.log('> error sending password reset email', err);
       console.log('> sending password reset email to: ', info.email);
@@ -85,10 +86,10 @@ console.log('in Apprentice sending mailing');
       from: 'you@gmail.com',
       subject: 'my subject',
       text: 'my text',
-      html: 'my <em>html</em>'
+      html: 'my <em>html</em>',
     }, function(err, mail) {
       console.log('email sent!');
       cb(err);
     });
-  }
+  };
 };
