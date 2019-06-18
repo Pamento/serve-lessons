@@ -21,6 +21,12 @@
     },
     "id": {
       "type": "number"
+    },
+    "created": {
+      "type": "Date",
+      "required": true,
+      "length": null,
+      "precision": null
     }
   },
   "validations": [],

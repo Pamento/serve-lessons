@@ -79,4 +79,16 @@ console.log('in Apprentice sending mailing');
       console.log('> sending password reset email to: ', info.email);
     });
   });
+  Apprentice.sendEmail = function(cb) {
+    Apprentice.app.models.Email.send({
+      to: 'pamento@op.pl',
+      from: 'you@gmail.com',
+      subject: 'my subject',
+      text: 'my text',
+      html: 'my <em>html</em>'
+    }, function(err, mail) {
+      console.log('email sent!');
+      cb(err);
+    });
+  }
 };

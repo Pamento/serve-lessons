@@ -51,5 +51,9 @@
   "exercise": {
     "dataSource": "frLesson",
     "public": false
+  },
+  "Sender": {
+    "dataSource": "db",
+    "public": true
   }
 }
