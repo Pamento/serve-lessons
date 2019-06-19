@@ -1,0 +1,36 @@
+{
+  "name": "Test",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "idTest": {
+      "type": "number",
+      "required": true
+    },
+    "idUser": {
+      "type": "number",
+      "required": true
+    },
+    "created": {
+      "type": "date",
+      "required": true
+    },
+    "result": {
+      "type": "string"
+    },
+    "comment": {
+      "type": "string"
+    },
+    "answers": {
+      "type": "string",
+      "required": true
+    }
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [],
+  "methods": {}
+}

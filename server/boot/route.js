@@ -4,9 +4,29 @@ const path = require('path');
 const loopback = require('loopback');
 const nodeMailer = require('nodemailer');
 
+/**
+ * To check if database changes are required, use the isActual() method.
+ * It accepts a callback argument that receives a Boolean value
+ * depending on database state:
+ * 
+ *     False if the database structure outdated
+ *     True when data source and database is in sync
+ * 
+ * /server/script.js
+ * 
+ * dataSource.isActual(models, function(err, actual) {
+ *   if (!actual) {
+ *     dataSource.autoupdate(models, function(err, result) {
+ *       // ...
+ *     });
+ *   }
+ * });
+ * https://loopback.io/doc/en/lb3/Creating-a-database-schema-from-models.html
+ * @param {*} app 
+ */
 module.exports = function(app) {
   let mysqlDs = app.dataSources.frLesson;
-  let exercise = app.models.exercise;
+  let test = app.models.test;
   let Apprentice = app.models.apprentice;
 
   // first autoupdate the `Apprentice` model to avoid foreign key constraint failure
@@ -14,10 +34,10 @@ module.exports = function(app) {
     if (err) throw err;
     console.log('\nAutoupdated table `Apprentice`.');
 
-    mysqlDs.autoupdate('exercise', function(err) {
+    mysqlDs.autoupdate('Test', function(err) {
       if (err) throw err;
-      console.log('Autoupdated table `exercise`.');
-      // at this point the database table `exercise` should have one foreign key `ApprenticeId` integrated
+      console.log('Autoupdated table `test`.');
+      // at this point the database table `test` should have one foreign key `ApprenticeId` integrated
     });
   });
   // at localhost:3000 is give the client the status of server

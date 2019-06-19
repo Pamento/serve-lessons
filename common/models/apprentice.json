@@ -27,6 +27,26 @@
       "required": true,
       "length": null,
       "precision": null
+    },
+    "test": {
+      "type": "boolean",
+      "required": true,
+      "default": false
+    },
+    "last_modification": {
+      "type": "date",
+      "required": true
+    },
+    "avatar": {
+      "type": "buffer"
+    },
+    "isAdmin": {
+      "type": "boolean",
+      "required": true,
+      "default": false
+    },
+    "comment": {
+      "type": "string"
     }
   },
   "validations": [],

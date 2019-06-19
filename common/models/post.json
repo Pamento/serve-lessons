@@ -1,0 +1,45 @@
+{
+  "name": "Post",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "idPost": {
+      "type": "number",
+      "required": true
+    },
+    "idUser": {
+      "type": "number",
+      "required": true
+    },
+    "post": {
+      "type": "string",
+      "required": true
+    },
+    "created": {
+      "type": "date",
+      "required": true
+    },
+    "last_modification": {
+      "type": "date",
+      "required": true
+    },
+    "author": {
+      "type": "string",
+      "required": true
+    },
+    "categories": {
+      "type": "string"
+    },
+    "hasComments": {
+      "type": "boolean",
+      "default": false
+    }
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [],
+  "methods": {}
+}

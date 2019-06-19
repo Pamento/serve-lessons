@@ -4,12 +4,12 @@
     "connector": "memory"
   },
   "frLesson": {
+    "debug": true,
     "host": "localhost",
     "port": 3306,
     "database": "frenchlessons",
     "password": "toor",
     "name": "frLesson",
-    "debug": true,
     "user": "toor",
     "connector": "mysql"
   },
@@ -26,8 +26,8 @@
           "rejectUnouthorized": true
         },
         "auth": {
-          "user": "v.frenchlessons@gmail.com",
-          "pass": "&aqWse4rfVgy7"
+          "user": "seamus40@ethereal.email",
+          "pass": "ahgxQ2grBk7nkrudU3"
         }
       }
     ]

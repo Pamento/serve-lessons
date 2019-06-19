@@ -1,0 +1,35 @@
+{
+  "name": "Comment",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "idComment": {
+      "type": "number",
+      "required": true
+    },
+    "idUser": {
+      "type": "number",
+      "required": true
+    },
+    "idPost": {
+      "type": "number",
+      "required": true
+    },
+    "comment": {
+      "type": "string",
+      "required": true
+    },
+    "approved": {
+      "type": "boolean",
+      "required": true,
+      "default": false
+    }
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [],
+  "methods": {}
+}

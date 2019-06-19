@@ -48,12 +48,20 @@
   "Email": {
     "dataSource": "Email"
   },
-  "exercise": {
-    "dataSource": "frLesson",
-    "public": false
-  },
   "Sender": {
     "dataSource": "db",
+    "public": true
+  },
+  "Post": {
+    "dataSource": "frLesson",
+    "public": true
+  },
+  "Test": {
+    "dataSource": "frLesson",
+    "public": true
+  },
+  "Comment": {
+    "dataSource": "frLesson",
     "public": true
   }
 }
