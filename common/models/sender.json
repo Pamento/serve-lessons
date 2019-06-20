@@ -34,9 +34,9 @@
       "accepts": [
         {
           "arg": "msg",
-          "type": "string",
+          "type": "object",
           "http": {
-            "source": "query"
+            "source": "body"
           }
         }
       ],

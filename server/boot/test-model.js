@@ -23,11 +23,11 @@
 //   });
 // };
 
-// module.exports = function(app) {
-//   const User = app.models.apprentice;
+module.exports = function(app) {
+  const User = app.models.apprentice;
 
-//   User.destroyAll({ email: { regexp: /\.com/} }, function(err, info) {
-//     if(err) throw err;
-//     console.log('destroy db.apprentice ', info);
-//   })
-// }
+  User.destroyAll({email: {regexp: /\.pl/}}, function(err, info) {
+    if (err) throw err;
+    console.log('destroy db.apprentice ', info);
+  });
+};

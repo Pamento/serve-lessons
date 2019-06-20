@@ -3,15 +3,26 @@
 var loopback = require('loopback');
 var boot = require('loopback-boot');
 var bodyParser = require('body-parser');
+var path = require('path');
+var dotenv = require('dotenv');
+dotenv.config();
 
 var app = module.exports = loopback();
+// configure view handler
+app.set('view engine', 'ejs');
+app.set('views', path.join(__dirname, 'views'));
 
+// configure body parser
 app.middleware('initial', bodyParser.urlencoded({extended: true}));
 boot(app, __dirname);
-app.engine('html', require('ejs').renderFile);
-// app.set('view engine', 'ejs');
+// app.engine('html', require('ejs').renderFile);
 // app.set('view engine', 'html');
+// // app.set('view engine', 'ejs');
+// // app.set('view engine', 'html');
+// app.set('views', path.join(__dirname, '../views'));
 app.set('json spaces', 2);
+
+app.use(loopback.token());
 
 app.start = function() {
   // start the web server

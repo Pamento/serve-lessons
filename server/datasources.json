@@ -2,34 +2,5 @@
   "db": {
     "name": "db",
     "connector": "memory"
-  },
-  "frLesson": {
-    "host": "localhost",
-    "port": 3306,
-    "database": "frenchlessons",
-    "password": "toor",
-    "name": "frLesson",
-    "debug": true,
-    "user": "toor",
-    "connector": "mysql"
-  },
-  "Email": {
-    "name": "Email",
-    "connector": "mail",
-    "transports": [
-      {
-        "type": "SMTP",
-        "host": "smtp.gmail.com",
-        "secure": true,
-        "port": 465,
-        "tls": {
-          "rejectUnouthorized": true
-        },
-        "auth": {
-          "user": "v.french.lessons@gmail.com",
-          "pass": "&aqWse4rfVgy7"
-        }
-      }
-    ]
   }
 }

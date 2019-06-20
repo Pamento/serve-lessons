@@ -5,6 +5,8 @@ var ds = server.dataSources.frLesson;
 var lbTables = ['apprentice', 'Post', 'Test', 'Comment'];
 ds.automigrate(lbTables, function(er) {
   if (er) throw er;
-  console.log('Loopback tables [' + lbTables + '] created in ', ds.adapter.name);
+  console.log(
+    'Loopback tables [' + lbTables + '] created in ', ds.adapter.name
+  );
   ds.disconnect();
 });

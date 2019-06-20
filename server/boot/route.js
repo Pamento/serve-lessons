@@ -8,12 +8,12 @@ const nodeMailer = require('nodemailer');
  * To check if database changes are required, use the isActual() method.
  * It accepts a callback argument that receives a Boolean value
  * depending on database state:
- * 
+ *
  *     False if the database structure outdated
  *     True when data source and database is in sync
- * 
+ *
  * /server/script.js
- * 
+ *
  * dataSource.isActual(models, function(err, actual) {
  *   if (!actual) {
  *     dataSource.autoupdate(models, function(err, result) {
@@ -22,7 +22,7 @@ const nodeMailer = require('nodemailer');
  *   }
  * });
  * https://loopback.io/doc/en/lb3/Creating-a-database-schema-from-models.html
- * @param {*} app 
+ * @param {*} app
  */
 module.exports = function(app) {
   let mysqlDs = app.dataSources.frLesson;
@@ -110,40 +110,41 @@ module.exports = function(app) {
     });
   });
 
-  app.post('/send-email', function(req, res) {
-    let transporter = nodeMailer.createTransport({
-      host: 'smtp.gmail.com',
-      port: 465,
-      secure: true,
-      auth: {
-        user: 'xxx@xx.com',
-        pass: 'xxxx',
-      },
-    });
-    transporter.verify(function(error, success) {
-      if (error) {
-        console.log('Server Error for email Nodemailer :\n', error);
-      } else {
-        console.log('Server is ready to take our messages');
-      }
-    });
-    let mailOptions = {
-      from: '"Krunal Lathiya" <xx@gmail.com>', // sender address
-      to: req.body.to, // list of receivers
-      subject: req.body.subject, // Subject line
-      text: req.body.body, // plain text body
-      html: '<b>NodeJS Email Tutorial</b>', // html body
-    };
+  // app.post('/send-email', function(req, res) {
+  //   let transporter = nodeMailer.createTransport({
+  //     host: 'smtp.gmail.com',
+  //     port: 465,
+  //     secure: true,
+  //     auth: {
+  //       user: 'xxx@xx.com',
+  //       pass: 'xxxx',
+  //     },
+  //   });
+  //   transporter.verify(function(error, success) {
+  //     if (error) {
+  //       console.log('Server Error for email Nodemailer :\n', error);
+  //     } else {
+  //       console.log('Server is ready to take our messages');
+  //     }
+  //   });
+  //   let mailOptions = {
+  //     from: '"Krunal Lathiya" <xx@gmail.com>', // sender address
+  //     to: req.body.to, // list of receivers
+  //     subject: req.body.subject, // Subject line
+  //     text: req.body.body, // plain text body
+  //     html: '<b>NodeJS Email Tutorial</b>', // html body
+  //   };
 
-    transporter.sendMail(mailOptions, (error, info) => {
-      if (error) {
-        return console.log(error);
-      }
-      console.log('Message %s sent: %s', info.messageId, info.response);
-      res.render('index');
-    });
-  });
-  app.get('/Senders/mail', function(req, res) {
-    console.log('mail\n', req);
+  //   transporter.sendMail(mailOptions, (error, info) => {
+  //     if (error) {
+  //       return console.log(error);
+  //     }
+  //     console.log('Message %s sent: %s', info.messageId, info.response);
+  //     res.render('index');
+  //   });
+  // });
+  app.post('/Senders/mail', function(req, res) {
+    console.log('mail\n', req.query);
+    console.log('mail\n', res);
   });
 };

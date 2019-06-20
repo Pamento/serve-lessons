@@ -23,7 +23,7 @@ module.exports = function(Apprentice) {
   // }
 
   Apprentice.afterRemote('create', function(context, userInstance, next) {
-    console.log('> user.afterRemote triggered');
+    console.log('> user.afterRemote triggered', userInstance);
 
     const options = {
       type: 'email',
@@ -32,12 +32,13 @@ module.exports = function(Apprentice) {
       subject: 'Thanks for registering.',
       template: path.resolve(__dirname, '../../server/views/verify.ejs'),
       text: '{href}',
-      redirect: 'verified',
+      redirect: '/verified',
       user: userInstance,
     };
 
     // or user.verify
     userInstance.verify(options, function(err, response) {
+      console.log('text', options.text);
       if (err) {
         Apprentice.deleteById(userInstance.id);
         return next(err);
