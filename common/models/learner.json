@@ -1,6 +1,6 @@
 {
-  "name": "apprentice",
-  "plural": "apprentices",
+  "name": "learner",
+  "plural": "learners",
   "base": "User",
   "idInjection": true,
   "options": {
@@ -50,7 +50,17 @@
     }
   },
   "validations": [],
-  "relations": {},
+  "relations": {
+    "comments": {
+      "type": "hasMany",
+      "model": "Comment"
+    },
+    "tests": {
+      "type": "hasOne",
+      "model": "Test",
+      "foreignKey": "idUser"
+    }
+  },
   "acls": [
     {
       "accessType": "EXECUTE",

@@ -29,7 +29,25 @@
     }
   },
   "validations": [],
-  "relations": {},
-  "acls": [],
+  "relations": {
+    "learner": {
+      "type": "belongsTo",
+      "model": "learner",
+      "foreignKey": "idUser"
+    },
+    "posts": {
+      "type": "hasOne",
+      "model": "Post",
+      "foreignKey": ""
+    }
+  },
+  "acls": [
+    {
+      "accessType": "*",
+      "principalType": "ROLE",
+      "principalId": "$everyone",
+      "permission": "ALLOW"
+    }
+  ],
   "methods": {}
 }

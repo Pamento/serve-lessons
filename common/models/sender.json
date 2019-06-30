@@ -41,8 +41,9 @@
         }
       ],
       "returns": {
-        "arg": "message",
-        "type": "string"
+        "arg": "sended",
+        "type": "string",
+        "http.target": "res.statusCode"
       },
       "http": {
         "path": "/mail",

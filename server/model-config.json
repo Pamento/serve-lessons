@@ -38,7 +38,7 @@
   "Message": {
     "dataSource": null
   },
-  "apprentice": {
+  "learner": {
     "dataSource": "frLesson",
     "public": true,
     "options": {

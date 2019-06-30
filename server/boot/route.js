@@ -27,12 +27,16 @@ const nodeMailer = require('nodemailer');
 module.exports = function(app) {
   let mysqlDs = app.dataSources.frLesson;
   let test = app.models.test;
-  let Apprentice = app.models.apprentice;
+  let Learner = app.models.learner;
 
-  // first autoupdate the `Apprentice` model to avoid foreign key constraint failure
-  mysqlDs.autoupdate('apprentice', function(err) {
+  /**
+   * for autoupdate sea
+   * https://loopback.io/doc/en/lb3/MySQL-connector.html
+   */
+  // first autoupdate the `Learner` model to avoid foreign key constraint failure
+  mysqlDs.autoupdate('learner', function(err) {
     if (err) throw err;
-    console.log('\nAutoupdated table `Apprentice`.');
+    console.log('\nAutoupdated table `Learner`.');
 
     mysqlDs.autoupdate('Test', function(err) {
       if (err) throw err;
@@ -58,8 +62,8 @@ module.exports = function(app) {
   });
 
   // send an email with instructions to reset an existing user's password
-  app.post('/api/apprentices/reset', function(req, res, next) {
-    const User = app.models.apprentice;
+  app.post('/api/learners/reset', function(req, res, next) {
+    const User = app.models.learner;
     User.resetPassword({
       email: req.body.email,
     }, function(err) {
@@ -80,7 +84,7 @@ module.exports = function(app) {
     if (!req.query.access_token) return res.sendStatus(401);
 
     res.render('form-pass-reset', {
-      redirectUrl: '/api/apprentices/reset-password?access_token=' +
+      redirectUrl: '/api/learners/reset-password?access_token=' +
       req.query.access_token,
       src: path.resolve(__dirname, '../../client/favicon.png'),
     });

@@ -5,11 +5,11 @@ const path = require('path');
 const senderAddress = 'no-replay@email.com';
 const loopback = require('loopback');
 
-module.exports = function(Apprentice) {
-  console.log('in Apprentice sending mailing');
+module.exports = function(Learner) {
+  console.log('in Learner sending mailing');
 
-  // Apprentice.sendEmail = function(cb) {
-  //   Apprentice.app.models.Email.send({
+  // Learner.sendEmail = function(cb) {
+  //   Learner.app.models.Email.send({
   //     to: 'foo@bar.com',
   //     from: senderAddress,
   //     subject: 'Emial from me',
@@ -22,7 +22,7 @@ module.exports = function(Apprentice) {
   //   });
   // }
 
-  Apprentice.afterRemote('create', function(context, userInstance, next) {
+  Learner.afterRemote('create', function(context, userInstance, next) {
     console.log('> user.afterRemote triggered', userInstance);
 
     const options = {
@@ -40,7 +40,7 @@ module.exports = function(Apprentice) {
     userInstance.verify(options, function(err, response) {
       console.log('text', options.text);
       if (err) {
-        Apprentice.deleteById(userInstance.id);
+        Learner.deleteById(userInstance.id);
         return next(err);
       }
 
@@ -56,8 +56,8 @@ module.exports = function(Apprentice) {
     });
   });
 
-  Apprentice.on('resetPasswordRequest', function(info) {
-    console.log('\n---------- apprentices.js --- resetpasword');
+  Learner.on('resetPasswordRequest', function(info) {
+    console.log('\n---------- learners.js --- resetpasword');
 
     let url = 'http://' + config.host + ':' + config.port + '/reset-password';
     let link = url + '?access_token=' + info.accessToken.id;
@@ -71,7 +71,7 @@ module.exports = function(Apprentice) {
         path.resolve(__dirname, '../../server/views/link-pass-reset.ejs')
       );
     let html = template(options);
-    Apprentice.app.models.email.send({
+    Learner.app.models.email.send({
       to: info.email,
       from: senderAddress,
       subject: 'Password reset',
@@ -81,8 +81,8 @@ module.exports = function(Apprentice) {
       console.log('> sending password reset email to: ', info.email);
     });
   });
-  Apprentice.sendEmail = function(cb) {
-    Apprentice.app.models.Email.send({
+  Learner.sendEmail = function(cb) {
+    Learner.app.models.Email.send({
       to: 'pamento@op.pl',
       from: 'you@gmail.com',
       subject: 'my subject',

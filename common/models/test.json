@@ -6,10 +6,6 @@
     "validateUpsert": true
   },
   "properties": {
-    "idTest": {
-      "type": "number",
-      "required": true
-    },
     "idUser": {
       "type": "number",
       "required": true
@@ -19,18 +15,34 @@
       "required": true
     },
     "result": {
-      "type": "string"
+      "type": "string",
+      "dataType": "text"
     },
     "comment": {
-      "type": "string"
+      "type": "string",
+      "dataType": "text"
     },
     "answers": {
       "type": "string",
+      "dataType": "longtext",
       "required": true
     }
   },
   "validations": [],
-  "relations": {},
-  "acls": [],
+  "relations": {
+    "learners": {
+      "type": "hasOne",
+      "model": "learner",
+      "foreignKey": "idUser"
+    }
+  },
+  "acls": [
+    {
+      "accessType": "*",
+      "principalType": "ROLE",
+      "principalId": "$authenticated",
+      "permission": "ALLOW"
+    }
+  ],
   "methods": {}
 }

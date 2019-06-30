@@ -2,7 +2,8 @@
 
 var server = require('./server');
 var ds = server.dataSources.frLesson;
-var lbTables = ['apprentice', 'Post', 'Test', 'Comment'];
+var lbTables = ['learner', 'Post', 'Test', 'Comment'];
+console.log('creating data source from mysql');
 ds.automigrate(lbTables, function(er) {
   if (er) throw er;
   console.log(
