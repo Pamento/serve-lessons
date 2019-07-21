@@ -42,7 +42,7 @@
   "relations": {
     "learners": {
       "type": "hasOne",
-      "model": "learner",
+      "model": "Learner",
       "foreignKey": "idUser"
     },
     "comments": {
@@ -56,6 +56,12 @@
       "accessType": "*",
       "principalType": "ROLE",
       "principalId": "$everyone",
+      "permission": "ALLOW"
+    },
+    {
+      "accessType": "*",
+      "principalType": "ROLE",
+      "principalId": "admin",
       "permission": "ALLOW"
     }
   ],

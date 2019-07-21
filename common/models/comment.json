@@ -30,9 +30,9 @@
   },
   "validations": [],
   "relations": {
-    "learner": {
+    "Learner": {
       "type": "belongsTo",
-      "model": "learner",
+      "model": "Learner",
       "foreignKey": "idUser"
     },
     "posts": {
@@ -46,6 +46,12 @@
       "accessType": "*",
       "principalType": "ROLE",
       "principalId": "$everyone",
+      "permission": "ALLOW"
+    },
+    {
+      "accessType": "*",
+      "principalType": "ROLE",
+      "principalId": "admin",
       "permission": "ALLOW"
     }
   ],

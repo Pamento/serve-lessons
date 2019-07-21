@@ -24,15 +24,15 @@
     },
     "answers": {
       "type": "string",
-      "dataType": "longtext",
-      "required": true
+      "required": true,
+      "dataType": "longtext"
     }
   },
   "validations": [],
   "relations": {
     "learners": {
       "type": "hasOne",
-      "model": "learner",
+      "model": "Learner",
       "foreignKey": "idUser"
     }
   },
@@ -41,6 +41,12 @@
       "accessType": "*",
       "principalType": "ROLE",
       "principalId": "$authenticated",
+      "permission": "ALLOW"
+    },
+    {
+      "accessType": "*",
+      "principalType": "ROLE",
+      "principalId": "admin",
       "permission": "ALLOW"
     }
   ],

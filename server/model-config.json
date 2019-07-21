@@ -13,32 +13,29 @@
       "./mixins"
     ]
   },
-  "User": {
-    "dataSource": "db"
-  },
   "AccessToken": {
-    "dataSource": "db",
+    "dataSource": "frLesson",
     "public": false
   },
   "ACL": {
-    "dataSource": "db",
+    "dataSource": "frLesson",
     "public": false
   },
   "RoleMapping": {
-    "dataSource": "db",
+    "dataSource": "frLesson",
     "public": false,
     "options": {
       "strictObjectIDCoercion": true
     }
   },
   "Role": {
-    "dataSource": "db",
+    "dataSource": "frLesson",
     "public": false
   },
   "Message": {
     "dataSource": null
   },
-  "learner": {
+  "Learner": {
     "dataSource": "frLesson",
     "public": true,
     "options": {
@@ -49,7 +46,7 @@
     "dataSource": "Email"
   },
   "Sender": {
-    "dataSource": "db",
+    "dataSource": "frLesson",
     "public": true
   },
   "Post": {

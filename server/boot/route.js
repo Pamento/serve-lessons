@@ -27,14 +27,14 @@ const nodeMailer = require('nodemailer');
 module.exports = function(app) {
   let mysqlDs = app.dataSources.frLesson;
   let test = app.models.test;
-  let Learner = app.models.learner;
+  let Learner = app.models.Learner;
 
   /**
    * for autoupdate sea
    * https://loopback.io/doc/en/lb3/MySQL-connector.html
    */
   // first autoupdate the `Learner` model to avoid foreign key constraint failure
-  mysqlDs.autoupdate('learner', function(err) {
+  mysqlDs.autoupdate('Learner', function(err) {
     if (err) throw err;
     console.log('\nAutoupdated table `Learner`.');
 
@@ -63,7 +63,7 @@ module.exports = function(app) {
 
   // send an email with instructions to reset an existing user's password
   app.post('/api/learners/reset', function(req, res, next) {
-    const User = app.models.learner;
+    const User = app.models.Learner;
     User.resetPassword({
       email: req.body.email,
     }, function(err) {

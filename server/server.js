@@ -14,7 +14,7 @@ app.set('views', path.join(__dirname, 'views'));
 
 // configure body parser
 app.middleware('initial', bodyParser.urlencoded({extended: true}));
-boot(app, __dirname);
+// boot(app, __dirname);
 // app.engine('html', require('ejs').renderFile);
 // app.set('view engine', 'html');
 // // app.set('view engine', 'ejs');

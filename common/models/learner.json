@@ -1,6 +1,6 @@
 {
-  "name": "learner",
-  "plural": "learners",
+  "name": "Learner",
+  "plural": "Learners",
   "base": "User",
   "idInjection": true,
   "options": {
@@ -96,6 +96,12 @@
       "principalId": "$unauthenticated",
       "permission": "ALLOW",
       "property": "resetPassword"
+    },
+    {
+      "accessType": "*",
+      "principalType": "ROLE",
+      "principalId": "admin",
+      "permission": "ALLOW"
     }
   ],
   "methods": {}

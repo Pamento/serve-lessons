@@ -1,99 +1,57 @@
-// module.exports = function(app) {
-//   var User = app.models.learner;
-//   var Role = app.models.Role;
-//   var RoleMapping = app.models.RoleMapping;
-//   var Team = app.models.Team;
+module.exports = function(app) {
+  var Learner = app.models.Learner;
+  var Role = app.models.Role;
+  var RoleMapping = app.models.RoleMapping;
 
-//   User.create([
-//     {
-//       name:"Pamento",
-//       email: 'pamento.dev@gmail.com',
-//       username: 'Pamento',
-//       password: 'opensesame',
-//       created: new Date(),
-//       last_modification: new Date(),
-//       emailVerified: 1
-//     },
-//     {
-//       name:"Pawel",
-//       email: 'pohos.samut@gmail.com',
-//       username: 'Pawel',
-//       password: 'opensesame',
-//       created: new Date(),
-//       last_modification: new Date(),
-//       emailVerified: 1
-//     },
-//     {
-//       name:"Valérie",
-//       email: 'v.alpanes@gmail.com',
-//       username: 'Valérie',
-//       password: 'opensesame',
-//       created: new Date(),
-//       last_modification: new Date(),
-//       emailVerified: 1
-//     }
-//   ], function(err, users) {
-//     if (err) throw err;
+  Role.find({ name: 'admin' }, function(err, results) {
+    if (err) { throw err }
 
-//     console.log('Created users:', users);
+    if (results.length < 1) {
+        // now we know the DB doesn't have it already, so do the Role creation...
+      Learner.create([
+        {
+          name:"Valérie",
+          email: 'v.alpanes@gmail.com',
+          username: 'Valérie',
+          password: 'alpa',
+          created: new Date(),
+          last_modification: new Date(),
+          emailVerified: 1,
+          isAdmin: true
+        }
+      ], function(err, users) {
+        if (err) throw err;
 
-//     // create project 1 and make john the owner
-//     users[0].projects.create({
-//       name: 'project1',
-//       balance: 100
-//     }, function(err, project) {
-//       if (err) throw err;
+        console.log('Created users:', users);
+        console.log('Created users:', users);
+        console.log('Created users:', users);
+        console.log('Created users:', users);
+        console.log('Created users:', users);
+        console.log('Created users:', users);
+        console.log('Created users:', users);
+        console.log('Created users:', users);
+        console.log('Created users:', users);
+        console.log('Created users:', users);
 
-//       console.log('Created project:', project);
+        //create the admin role
+        Role.create({
+          name: 'admin'
+        }, function(err, role) {
+          if (err) throw err;
 
-//       // add team members
-//       Team.create([
-//         {ownerId: project.ownerId, memberId: users[0].id},
-//         {ownerId: project.ownerId, memberId: users[1].id}
-//       ], function(err, team) {
-//         if (err) throw err;
+          console.log('Created role:', role);
 
-//         console.log('Created team:', team);
-//       });
-//     });
+          //make Valérie an admin
+          role.principals.create({
+            principalType: RoleMapping.USER,
+            principalId: users[0].id
+          }, function(err, principal) {
+            if (err) throw err;
 
-//     //create project 2 and make jane the owner
-//     users[1].projects.create({
-//       name: 'project2',
-//       balance: 100
-//     }, function(err, project) {
-//       if (err) throw err;
-
-//       console.log('Created project:', project);
-
-//       //add team members
-//       Team.create({
-//         ownerId: project.ownerId,
-//         memberId: users[1].id
-//       }, function(err, team) {
-//         if (err) throw err;
-
-//         console.log('Created team:', team);
-//       });
-//     });
-
-//     //create the admin role
-//     Role.create({
-//       name: 'admin'
-//     }, function(err, role) {
-//       if (err) throw err;
-
-//       console.log('Created role:', role);
-
-//       //make bob an admin
-//       role.principals.create({
-//         principalType: RoleMapping.USER,
-//         principalId: users[2].id
-//       }, function(err, principal) {
-//         if (err) throw err;
-
-//         console.log('Created principal:', principal);
-//       });
-//     });
-//   });
-// };
+            console.log('Created principal:', principal);
+          });
+        });
+      });
+    }
+  });
+};
