@@ -45,9 +45,9 @@ module.exports = function(app) {
     });
   });
   // at localhost:3000 is give the client the status of server
-  var router = app.loopback.Router();
-  router.get('/', app.loopback.status());
-  app.use(router);
+  // var router = app.loopback.Router();
+  // router.get('/', app.loopback.status());
+  // app.use(router);
 
   // check the sender
   app.get('/first', function(req, res) {

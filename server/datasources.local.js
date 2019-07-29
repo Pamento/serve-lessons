@@ -8,7 +8,7 @@ module.exports = {
   frLesson: {
     host: 'localhost',
     port: 3306,
-    database: 'frenchlessons',
+    database: 'c1205526c_frenchlessons',
     password: process.env.MYSQL_PWD,
     name: 'frLesson',
     debug: true,
