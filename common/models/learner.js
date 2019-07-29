@@ -6,21 +6,6 @@ const senderAddress = 'no-replay@email.com';
 const loopback = require('loopback');
 
 module.exports = function(Learner) {
-  console.log('in Learner sending mailing');
-
-  // Learner.sendEmail = function(cb) {
-  //   Learner.app.models.Email.send({
-  //     to: 'foo@bar.com',
-  //     from: senderAddress,
-  //     subject: 'Emial from me',
-  //     text: '{href}',
-
-  //     html: 'my <em>kapusta</em>'
-  //   }, function(err, mail) {
-  //     console.log('email sent!');
-  //     cb(err);
-  //   });
-  // }
 
   Learner.afterRemote('create', function(context, userInstance, next) {
     console.log('> user.afterRemote triggered', userInstance);
@@ -43,22 +28,10 @@ module.exports = function(Learner) {
         Learner.deleteById(userInstance.id);
         return next(err);
       }
-
-      console.log('> verification email sent:\n', response);
-
-      // context.res.render('response', {
-      //   title: 'Signed up successfully',
-      //   content: 'Please check your email and click on the verification link ' -
-      //       'before logging in.',
-      //   redirectTo: '/',
-      //   redirectToLinkText: 'Log in'
-      // });
     });
   });
 
   Learner.on('resetPasswordRequest', function(info) {
-    console.log('\n---------- learners.js --- resetpasword');
-
     let url = 'http://' + config.host + ':' + config.port + '/reset-password';
     let link = url + '?access_token=' + info.accessToken.id;
     const options = {
@@ -81,16 +54,4 @@ module.exports = function(Learner) {
       console.log('> sending password reset email to: ', info.email);
     });
   });
-  Learner.sendEmail = function(cb) {
-    Learner.app.models.Email.send({
-      to: 'pamento@op.pl',
-      from: 'you@gmail.com',
-      subject: 'my subject',
-      text: 'my text',
-      html: 'my <em>html</em>',
-    }, function(err, mail) {
-      console.log('email sent!');
-      cb(err);
-    });
-  };
 };

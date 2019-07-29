@@ -22,17 +22,6 @@ module.exports = function(app) {
       ], function(err, users) {
         if (err) throw err;
 
-        console.log('Created users:', users);
-        console.log('Created users:', users);
-        console.log('Created users:', users);
-        console.log('Created users:', users);
-        console.log('Created users:', users);
-        console.log('Created users:', users);
-        console.log('Created users:', users);
-        console.log('Created users:', users);
-        console.log('Created users:', users);
-        console.log('Created users:', users);
-
         //create the admin role
         Role.create({
           name: 'admin'

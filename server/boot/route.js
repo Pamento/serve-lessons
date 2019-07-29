@@ -91,8 +91,6 @@ module.exports = function(app) {
   });
 
   app.post('/email', function(req, res, next) {
-    console.log('ok');
-    console.log(req);
 
     let emOpt = {
       from: 'Bot no-replay@nodemail.com',
